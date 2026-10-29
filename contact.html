@@ -32,11 +32,10 @@
           <li><a href="cultural-heritage.html">Cultural Heritage</a></li>
           <li><a href="community-projects.html">Community</a></li>
           <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="contact.html" class="active">Plan Visit</a></li>
         </ul>
 
         <div class="nav-actions">
-          <a href="contact.html" class="nav-cta">Inquire / Permits</a>
+          <a href="contact.html" class="nav-cta active">Plan Your Visit</a>
           <button class="burger-btn" id="burgerBtn" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
           </button>
@@ -50,8 +49,8 @@
   <aside class="mobile-nav" id="mobileNav">
     <div class="mobile-nav-header">
       <div class="nav-brand">
-        <img src="assets/images/logo.png" alt="Doro !Nawas Logo" style="width: 44px; height: 44px;">
-        <span class="nav-brand-title" style="font-size: 1rem;">DORO !NAWAS</span>
+        <img src="assets/images/logo.png" alt="Doro !Nawas Conservancy Logo" class="mobile-logo-img">
+        <span class="nav-brand-title">DORO !NAWAS</span>
       </div>
       <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
     </div>
@@ -64,8 +63,8 @@
       <a href="gallery.html">Visual Gallery</a>
       <a href="contact.html" class="active">Visit Planning &amp; Contact</a>
     </div>
-    <div style="margin-top: auto; padding-top: 20px;">
-      <a href="contact.html" class="btn btn-primary" style="width: 100%;">Plan Your Visit</a>
+    <div class="mobile-nav-footer">
+      <a href="contact.html" class="btn btn-primary">Plan Your Visit</a>
     </div>
   </aside>
 
@@ -89,14 +88,14 @@
   </section>
 
   <!-- Interactive Form & Contact Details -->
-  <section class="section">
+  <section class="section" id="permits">
     <div class="wrap">
       <div class="contact-grid">
         <!-- Contact Information Card -->
         <div class="contact-info-card">
-          <div class="eyebrow" style="color: var(--color-gold);">Conservancy Office</div>
+          <div class="eyebrow">Conservancy Office</div>
           <h3>Doro !Nawas Management Headquarters</h3>
-          <p style="color: #cdd8e6; font-size: 0.95rem;">
+          <p>
             Our conservancy office handles visitor activity clearances, community ranger scheduling, campsite reservations, and conservation permit validation.
           </p>
 
@@ -146,8 +145,8 @@
         <!-- Visit & Permit Inquiry Form -->
         <div class="form-card">
           <div class="eyebrow">Permits &amp; Reservations</div>
-          <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Plan Your Experience</h2>
-          <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 24px;">
+          <h2>Plan Your Experience</h2>
+          <p>
             Fill in the form below to request tracking permits, reserve certified guides, or inquire about lodge availability.
           </p>
 
@@ -203,11 +202,11 @@
               <textarea id="message" class="form-control" placeholder="Tell us about your self-drive itinerary, special interests, or any questions regarding 4x4 road conditions..."></textarea>
             </div>
 
-            <div id="formSuccessMessage" style="display: none; background: #e8f5e9; border: 1px solid #4caf50; color: #2e7d32; padding: 16px; border-radius: var(--radius-sm); margin-bottom: 18px; font-size: 0.95rem;">
+            <div id="formSuccessMessage" class="form-success">
               <strong>Thank you!</strong> Your inquiry has been dispatched to the Doro !Nawas Conservancy Office. Our wardens will contact you within 24 hours.
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Visit Inquiry</button>
+            <button type="submit" class="btn btn-primary">Submit Visit Inquiry</button>
           </form>
         </div>
       </div>
@@ -227,28 +226,28 @@
 
       <div class="grid-3">
         <!-- Route 1: From Windhoek -->
-        <div class="feature-card" style="padding: 26px;">
-          <span class="card-tag" style="position: static; margin-bottom: 12px; display: inline-block;">Self-Drive Route 1</span>
-          <h3 style="font-size: 1.35rem; margin-bottom: 10px;">From Windhoek (450 km)</h3>
-          <p style="color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.6;">
+        <div class="feature-card info-card">
+          <span class="card-tag card-tag-inline">Self-Drive Route 1</span>
+          <h3>From Windhoek (450 km)</h3>
+          <p>
             Take the B1 north to Otjiwarongo, then the C38 to Outjo. Turn onto the C39 westward through Khorixas. Approximately 80 km past Khorixas, turn onto the D2612 heading toward Twyfelfontein. Estimated driving time: 5.5 to 6 hours.
           </p>
         </div>
 
         <!-- Route 2: From Swakopmund -->
-        <div class="feature-card" style="padding: 26px;">
-          <span class="card-tag" style="position: static; margin-bottom: 12px; display: inline-block;">Self-Drive Route 2</span>
-          <h3 style="font-size: 1.35rem; margin-bottom: 10px;">From Swakopmund (330 km)</h3>
-          <p style="color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.6;">
+        <div class="feature-card info-card">
+          <span class="card-tag card-tag-inline">Self-Drive Route 2</span>
+          <h3>From Swakopmund (330 km)</h3>
+          <p>
             Drive north along the Atlantic coast on the C34 to Henties Bay, then take the C35 inland past Uis and the Brandberg massif. Continue on the C35 and turn left onto the D2612 toward Twyfelfontein. Estimated driving time: 4 to 4.5 hours.
           </p>
         </div>
 
         <!-- Air Charter -->
-        <div class="feature-card" style="padding: 26px;">
-          <span class="card-tag" style="position: static; margin-bottom: 12px; display: inline-block;">Fly-In Safari</span>
-          <h3 style="font-size: 1.35rem; margin-bottom: 10px;">Doro Nawas Airstrip</h3>
-          <p style="color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.6;">
+        <div class="feature-card info-card">
+          <span class="card-tag card-tag-inline">Fly-In Safari</span>
+          <h3>Doro Nawas Airstrip</h3>
+          <p>
             Registered, compacted gravel airstrip suitable for light aircraft (e.g. Cessna 206, 208 Caravan). Coordinates: <strong>20°28'25"S, 14°23'30"E</strong>. Runway length: 1,600 metres. Wilderness lodge transfers meet arriving flights.
           </p>
         </div>
@@ -360,6 +359,7 @@
             <li><a href="cultural-heritage.html">Cultural Heritage</a></li>
             <li><a href="community-projects.html">Community Projects</a></li>
             <li><a href="gallery.html">Visual Gallery</a></li>
+            <li><a href="contact.html">Plan Your Visit</a></li>
           </ul>
         </div>
 

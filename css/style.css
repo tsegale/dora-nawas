@@ -19,21 +19,21 @@
   --color-text-light: #f4f6fa;     /* Light Text */
   --color-border: #e6dfd3;        /* Soft Border */
   --color-border-dark: #2a3a52;   /* Dark Mode Border */
-  
+
   --font-serif: 'Cormorant Garamond', 'Cinzel', Georgia, serif;
   --font-heading: 'Cinzel', 'Cormorant Garamond', serif;
   --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  
+
   --shadow-sm: 0 2px 8px rgba(11, 26, 48, 0.06);
   --shadow-md: 0 8px 24px rgba(11, 26, 48, 0.10);
   --shadow-lg: 0 16px 40px rgba(11, 26, 48, 0.16);
   --shadow-gold: 0 8px 30px rgba(212, 163, 89, 0.25);
-  
+
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-full: 9999px;
-  
+
   --transition-fast: 0.2s ease;
   --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -51,6 +51,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  scroll-padding-top: 84px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -174,33 +175,44 @@ p:last-child {
 #siteHeader.scrolled {
   background: rgba(7, 18, 34, 0.96);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  padding: 4px 0;
 }
 
 nav.main-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  gap: 24px;
+  height: 92px;
   transition: height var(--transition-fast);
 }
 
 #siteHeader.scrolled nav.main-nav {
-  height: 70px;
+  height: 72px;
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
   gap: 14px;
+  flex-shrink: 0;
+}
+
+/* The badge has a dark brown rim that disappears on navy, so a thin gold halo keeps its edge readable */
+.nav-logo-img,
+.footer-logo-img,
+.mobile-logo-img {
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 1px rgba(230, 190, 126, 0.9)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
 }
 
 .nav-logo-img {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
-  transition: transform var(--transition-normal);
+  height: 76px;
+  transition: transform var(--transition-normal), height var(--transition-normal);
+}
+
+#siteHeader.scrolled .nav-logo-img {
+  height: 60px;
 }
 
 .nav-brand:hover .nav-logo-img {
@@ -214,7 +226,8 @@ nav.main-nav {
 
 .nav-brand-title {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.2rem;
+  white-space: nowrap;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: 0.05em;
@@ -226,9 +239,10 @@ nav.main-nav {
 }
 
 .nav-brand-sub {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
   color: var(--color-gold-light);
   text-transform: uppercase;
 }
@@ -236,11 +250,12 @@ nav.main-nav {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 26px;
 }
 
 .nav-links a {
-  font-size: 0.92rem;
+  white-space: nowrap;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #e3e8f0;
   letter-spacing: 0.04em;
@@ -287,9 +302,14 @@ nav.main-nav {
   font-size: 0.85rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
   border-radius: var(--radius-full);
   box-shadow: 0 4px 15px rgba(212, 163, 89, 0.35);
   transition: all var(--transition-fast);
+}
+
+.nav-cta.active {
+  box-shadow: 0 0 0 2px var(--color-primary-dark), 0 0 0 3px var(--color-gold-light);
 }
 
 .nav-cta:hover {
@@ -369,10 +389,27 @@ nav.main-nav {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.mobile-logo-img {
+  height: 56px;
+}
+
+.mobile-nav-header .nav-brand-title {
+  font-size: 1rem;
+}
+
 .mobile-close {
   color: #fff;
   font-size: 2rem;
   line-height: 1;
+}
+
+.mobile-nav-footer {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.mobile-nav-footer .btn {
+  width: 100%;
 }
 
 .mobile-nav-links {
@@ -407,12 +444,12 @@ nav.main-nav {
   text-align: center;
   color: #ffffff;
   overflow: hidden;
-  padding: 120px 20px 80px;
+  padding: 140px 20px 80px;
 }
 
 .hero-page {
   min-height: 60vh;
-  padding: 140px 20px 60px;
+  padding: 160px 20px 70px;
 }
 
 .hero-bg {
@@ -464,6 +501,7 @@ nav.main-nav {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 24px;
+  max-width: 100%;
   backdrop-filter: blur(8px);
 }
 
@@ -482,7 +520,8 @@ nav.main-nav {
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  font-size: clamp(1.9rem, 6vw, 4.8rem);
+  overflow-wrap: break-word;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 20px;
@@ -575,6 +614,40 @@ nav.main-nav {
 .btn-sm {
   padding: 8px 18px;
   font-size: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
+   Closing CTA Section
+   -------------------------------------------------------------------------- */
+.cta-section {
+  background: radial-gradient(circle at center, var(--color-primary-light) 0%, var(--color-primary-dark) 100%);
+  color: #ffffff;
+  text-align: center;
+}
+
+.cta-section h2 {
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+
+.cta-section p {
+  color: #d2dbe8;
+  font-size: 1.12rem;
+  margin-bottom: 32px;
+}
+
+.section-dark .eyebrow,
+.cta-section .eyebrow,
+.callout-banner .eyebrow,
+.contact-info-card .eyebrow {
+  color: var(--color-gold-light);
+}
+
+.section-dark .eyebrow::before,
+.cta-section .eyebrow::before,
+.callout-banner .eyebrow::before,
+.contact-info-card .eyebrow::before {
+  background-color: var(--color-gold-light);
 }
 
 /* --------------------------------------------------------------------------
@@ -779,6 +852,92 @@ nav.main-nav {
   transform: translateX(4px);
 }
 
+/* Text-only cards: no media, not clickable, so no hover lift */
+.info-card {
+  padding: 30px 28px;
+}
+
+.info-card:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.info-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.info-card h4 {
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  color: var(--color-text-muted);
+  font-size: 0.94rem;
+}
+
+.info-card .card-body {
+  padding: 0;
+}
+
+.card-tag-inline {
+  position: static;
+  align-self: flex-start;
+  margin-bottom: 14px;
+  background: var(--color-primary);
+}
+
+.lodge-card .eyebrow {
+  color: var(--color-gold-dark);
+}
+
+.lodge-card .eyebrow::before {
+  background-color: var(--color-gold-dark);
+}
+
+.lodge-card h3 {
+  font-size: 1.6rem;
+}
+
+.lodge-card p {
+  margin-bottom: 20px;
+}
+
+.lodge-card .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 26px;
+  font-size: 0.92rem;
+  color: var(--color-text-dark);
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.check-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+
+.section-actions {
+  text-align: center;
+  margin-top: 44px;
+}
+
 /* --------------------------------------------------------------------------
    Split / Two-Column Narrative Sections
    -------------------------------------------------------------------------- */
@@ -836,6 +995,14 @@ nav.main-nav {
   margin-bottom: 4px;
 }
 
+.section-dark .split-media-badge {
+  background: var(--color-primary-dark);
+}
+
+.split-media-badge strong em {
+  font-size: 1.4rem;
+}
+
 .split-media-badge span {
   font-size: 0.8rem;
   color: #c4d0e0;
@@ -849,6 +1016,10 @@ nav.main-nav {
 .split-copy p {
   font-size: 1.02rem;
   margin-bottom: 18px;
+}
+
+.split-copy > .btn {
+  margin-top: 8px;
 }
 
 .feature-list {
@@ -925,6 +1096,16 @@ nav.main-nav {
   max-width: 650px;
 }
 
+.callout-content .btn {
+  white-space: nowrap;
+}
+
+/* Inside a dark section the banner needs its own surface to read as a panel */
+.section-dark .callout-banner {
+  background: var(--color-primary-light);
+  border-color: rgba(212, 163, 89, 0.5);
+}
+
 /* --------------------------------------------------------------------------
    Gallery Styles & Lightbox
    -------------------------------------------------------------------------- */
@@ -968,6 +1149,7 @@ nav.main-nav {
   height: 280px;
   box-shadow: var(--shadow-sm);
   cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .gallery-item img {
@@ -1056,7 +1238,7 @@ nav.main-nav {
 
 .lightbox-close {
   position: absolute;
-  top: -40px;
+  top: -44px;
   right: 0;
   color: #ffffff;
   font-size: 2.2rem;
@@ -1131,7 +1313,7 @@ nav.main-nav {
 
 .faq-item.active .faq-answer {
   padding: 0 24px 20px 24px;
-  max-height: 300px;
+  max-height: 600px;
 }
 
 /* --------------------------------------------------------------------------
@@ -1150,6 +1332,11 @@ nav.main-nav {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(212, 163, 89, 0.3);
   box-shadow: var(--shadow-lg);
+}
+
+.contact-info-card > p {
+  color: #cdd8e6;
+  font-size: 0.95rem;
 }
 
 .contact-info-card h3 {
@@ -1204,6 +1391,32 @@ nav.main-nav {
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-md);
+}
+
+.form-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.form-card > p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.form-card .btn[type="submit"] {
+  width: 100%;
+}
+
+.form-success {
+  display: none;
+  background: #e8f5e9;
+  border: 1px solid #4caf50;
+  color: #2e7d32;
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 18px;
+  font-size: 0.95rem;
 }
 
 .form-group {
@@ -1275,9 +1488,7 @@ footer.site-footer {
 }
 
 .footer-logo-img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
+  height: 92px;
 }
 
 .footer-brand p {
@@ -1328,6 +1539,7 @@ footer.site-footer {
 
 .newsletter-input {
   flex: 1;
+  min-width: 0;
   padding: 10px 14px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -1375,29 +1587,39 @@ footer.site-footer {
 /* --------------------------------------------------------------------------
    Responsive Media Queries
    -------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
+@media (max-width: 1279px) {
   .nav-links,
   .nav-actions .nav-cta {
     display: none;
   }
-  
+
   .burger-btn {
     display: flex;
   }
-  
+}
+
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
   }
-  
+
   .stat-item:nth-child(2) {
     border-right: none;
   }
-  
+
   .grid-3 {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .footer-top {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1407,63 +1629,119 @@ footer.site-footer {
   .section {
     padding: 60px 0;
   }
-  
+
   .split {
     grid-template-columns: 1fr;
     gap: 36px;
   }
-  
+
   .split-media-frame img {
     height: 320px;
   }
-  
+
+  .split-media {
+    margin-bottom: 20px;
+  }
+
   .split-media-badge {
-    bottom: -10px;
-    right: 10px;
+    bottom: -20px;
+    right: 12px;
     padding: 14px 18px;
   }
-  
+
+  nav.main-nav,
+  #siteHeader.scrolled nav.main-nav {
+    height: 72px;
+  }
+
+  .nav-logo-img,
+  #siteHeader.scrolled .nav-logo-img {
+    height: 58px;
+  }
+
+  .nav-brand {
+    gap: 10px;
+  }
+
+  .nav-brand-title {
+    font-size: 1.05rem;
+  }
+
+  .hero,
+  .hero-page {
+    padding-top: 120px;
+  }
+
+  .callout-banner {
+    padding: 36px 24px;
+  }
+
+  .callout-content .btn {
+    white-space: normal;
+  }
+
+  .callout-content .eyebrow {
+    justify-content: center;
+  }
+
+  .form-card,
+  .contact-info-card {
+    padding: 28px 22px;
+  }
+
   .grid-2,
   .grid-3,
   .grid-4,
   .gallery-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .stat-item {
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 18px;
   }
-  
+
   .stat-item:last-child {
     border-bottom: none;
   }
-  
+
   .callout-content {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .contact-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .form-row {
     grid-template-columns: 1fr;
   }
-  
+
   .footer-top {
     grid-template-columns: 1fr;
     gap: 36px;
   }
-  
+
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+  }
+
+  .footer-badges {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav-brand-sub {
+    display: none;
   }
 }

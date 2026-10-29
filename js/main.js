@@ -58,6 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = parseFloat(el.getAttribute('data-target'));
       const prefix = el.getAttribute('data-prefix') || '';
       const suffix = el.getAttribute('data-suffix') || '';
+      // Years must not get thousands separators ("Est. 1,999")
+      const format = el.getAttribute('data-grouping') === 'false'
+        ? (n) => String(n)
+        : (n) => n.toLocaleString();
       const duration = 1800; // ms
       const startTime = performance.now();
 
@@ -69,12 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const easeProgress = 1 - Math.pow(1 - progress, 3);
         const currentVal = Math.floor(easeProgress * target);
 
-        el.textContent = `${prefix}${currentVal.toLocaleString()}${suffix}`;
+        el.textContent = `${prefix}${format(currentVal)}${suffix}`;
 
         if (progress < 1) {
           requestAnimationFrame(updateCount);
         } else {
-          el.textContent = `${prefix}${target.toLocaleString()}${suffix}`;
+          el.textContent = `${prefix}${format(target)}${suffix}`;
         }
       };
 
